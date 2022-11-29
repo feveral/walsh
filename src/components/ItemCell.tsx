@@ -6,9 +6,9 @@ export default function ItemCell (
     return (
         <div onClick={onClick} className="flex flex-col items-center">
             <div>
-                <img src={imageUrl} className="w-48 rounded-lg" alt=""/>
+                <img src={imageUrl} className="w-48 h-48 object-cover rounded-lg" alt=""/>
             </div>
-            <p>{title}</p>
+            <p className="break-normal w-48">{title}</p>
         </div>
     )
 }
