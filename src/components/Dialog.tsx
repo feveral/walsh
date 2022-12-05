@@ -16,6 +16,7 @@ function Dialog ({open, setOpen, children}: {open: any, setOpen: any, children: 
     return (
         <ReactModal
             isOpen={open}
+            ariaHideApp={false}
             onRequestClose={() => {setOpen(false)}}
             style={dialogStyles}
             contentLabel="">
