@@ -8,6 +8,7 @@ import { MemeItem } from "../models/MemeItem";
 import Dialog from "../components/Dialog";
 import ReactJson from 'react-json-view'
 import Spinner from "../components/Spinner";
+import { TemplateItem } from "../models/TemplateItem";
 
 export default function MainPage () {
 
@@ -21,9 +22,13 @@ export default function MainPage () {
         let url = new URL(urlString);
         const response = await axios.get(urlString);
 
-        if (url.hostname === 'memery.app') {
+        if ((url.hostname === 'memery.app' || url.hostname === 'dev.memery.app') && url.pathname.startsWith('/api/memes')) {
             setItems(
                 response.data.map((json: any) => new MemeItem(json))
+            );
+        } else if ((url.hostname === 'memery.app' || url.hostname === 'dev.memery.app') && url.pathname.startsWith('/api/templates')) {
+            setItems(
+                response.data.map((json: any) => new TemplateItem(json))
             );
         } else if (url.hostname === 'www.googleapis.com') {
             setItems(
